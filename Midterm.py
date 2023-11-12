@@ -5,10 +5,12 @@ tabs = {}
 
 open_tabs_order = []
 
+# Added the ability to open a new tab and check if a tab is already open.
 
-def open_tab(tab_name, tab_url, tabsList):
-    new_tab = {"name": tab_name, "URL": tab_url}
-    tabsList.append(new_tab)
+def open_tab(tab_name, tab_url, tabsList):  ##Open a new tab and add it to the list of tabs.
+    new_tab = {"name": tab_name, "URL": tab_url}    ### Create a new dictionary representing the information of the new tab
+
+    tabsList.append(new_tab)    ###tabs_list (list): The list containing information about all open tabs.
 
 
 def add_new_tab(tabsList):  ##The list containing information about all open tabs.
@@ -135,7 +137,7 @@ def save_tabs(file_path):   ###to save info in the tabs into a json file
     print(f"Tabs saved to {file_path}")
 
 # Import tabs from a text file.
-
+###O(n)
 def import_tabs(file_path): ##path to json file containing the tabs data
     global tabs
     try:
