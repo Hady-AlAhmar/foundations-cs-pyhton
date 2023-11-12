@@ -6,15 +6,15 @@ open_tabs_order = []
 
 # Added the ability to open a new tab and check if a tab is already open.
 
-def open_tab(tab_name):
+def open_tab(tab_name, url):
     """Open a new tab."""
     if tab_name not in tabs:
-        tabs[tab_name] = {}
+        tabs[tab_name] = {'url': url}
         open_tabs_order.append(tab_name)
-        print(f"Tab '{tab_name}' opened successfully.")
+        print(f"Tab '{tab_name}' with URL '{url}' opened successfully.")
     else:
         print(f"Tab '{tab_name}' is already open.")
-
+        
 # Added the ability to close an open tab.
 
 def close_tab(tab_name):
@@ -80,3 +80,46 @@ def import_tabs(filename):
         tabs = {tab_name: {} for tab_name in tab_names}
         open_tabs_order = list(tabs.keys())
     print(f"Tabs imported from '{filename}'.")
+    
+while True:
+    print("\nBrowser Tabs Simulation Menu:")
+    print("1. OpenTab")
+    print("2. CloseTab")
+    print("3. SwitchTab")
+    print("4. DisplayAllTabs")
+    print("5. OpenNestedTab")
+    print("6. ClearAllTabs")
+    print("7. SaveTabs")
+    print("8. ImportTabs")
+    print("9. Exit")
+
+    choice = input("Enter your choice (1-9): ")
+
+    if choice == '1':
+        tab_name = input("Enter the name of the tab to open: ")
+        open_tab(tab_name)
+    elif choice == '2':
+        tab_name = input("Enter the name of the tab to close: ")
+        close_tab(tab_name)
+    elif choice == '3':
+        tab_name = input("Enter the name of the tab to switch to: ")
+        switch_tab(tab_name)
+    elif choice == '4':
+        display_all_tabs()
+    elif choice == '5':
+        parent_tab = input("Enter the name of the parent tab: ")
+        nested_tab_name = input("Enter the name of the nested tab to open: ")
+        open_nested_tab(parent_tab, nested_tab_name)
+    elif choice == '6':
+        clear_all_tabs()
+    elif choice == '7':
+        filename = input("Enter the filename to save tabs to: ")
+        save_tabs(filename)
+    elif choice == '8':
+        filename = input("Enter the filename to import tabs from: ")
+        import_tabs(filename)
+    elif choice == '9':
+        print("Exiting the program. Goodbye!")
+        break
+    else:
+        print("Invalid choice. Please enter a number between 1 and 9.")
