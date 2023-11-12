@@ -6,11 +6,16 @@ open_tabs_order = []
 
 # Added the ability to open a new tab and check if a tab is already open.
 
-def add_new_tab():
+def open_tab(tab_name, tab_url, tabsList):
+    new_tab = {"name": tab_name, "URL": tab_url}
+    tabsList.append(new_tab)
+
+
+def add_new_tab(tabsList):
     """Add a new tab with title and URL."""
     tab_name = input("Enter the title of the new tab: ")
     tab_url = input("Enter the URL of the new tab: ")
-    open_tab(tab_name, tab_url)
+    open_tab(tab_name, tab_url, tabsList)
         
 # Added the ability to close an open tab.
 
@@ -21,19 +26,16 @@ def close_tab(index=None):
         return
 
     if index is None:
- # If no index is provided, close the last opened tab
+        # If no index is provided, close the last opened tab
         tab_name = open_tabs_order.pop()
     else:
         try:
- # close the tab at the specified index
+            # close the tab at the specified index
             tab_name = open_tabs_order.pop(index)
         except IndexError:
             print(f"Invalid index: {index}. No such tab.")
             return
-
-    del tabs[tab_name]
     print(f"Tab '{tab_name}' closed successfully.")
-
 
 # Added the ability to switch to a different tab.
 
