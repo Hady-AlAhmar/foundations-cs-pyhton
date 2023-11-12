@@ -1,5 +1,5 @@
 import requests
-
+import json
 tabs = {}
 
 
@@ -109,12 +109,10 @@ def clear_all_tabs():
     
 # Save the current tabs to a text file.
 
-def save_tabs(filename):
-    """Save the current tabs to a text file."""
-    with open(filename, 'w') as file:
-        for tab_name in open_tabs_order:
-            file.write(tab_name + '\n')
-    print(f"Tabs saved to '{filename}'.")
+def save_tabs(file_path):
+    with open(file_path, 'w') as file:
+        json.dump(tabs, file, indent=2)
+    print(f"Tabs saved to {file_path}")
 
 # Import tabs from a text file.
 
@@ -156,9 +154,9 @@ while True:
         open_nested_tab(parent_tab_index)
     elif choice == "6":
         clear_all_tabs()
-    elif choice == "7":
-        filename = input("Enter the filename to save tabs to: ")
-        save_tabs(filename)
+    elif choice == '7':
+        file_path = input("Enter file path to save tabs: ")
+        save_tabs(file_path)
     elif choice == "8":
         filename = input("Enter the filename to import tabs from: ")
         import_tabs(filename)
