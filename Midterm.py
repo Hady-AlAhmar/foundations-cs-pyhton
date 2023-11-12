@@ -15,7 +15,7 @@ def open_tab(tab_name, tab_url, tabsList):
 def add_new_tab(tabsList):
     """Add a new tab with title and URL."""
     tab_name = input("Enter the title of the new tab: ")
-    tab_url = input("Enter the URL of the new tab as following https://website.com: ")
+    tab_url = input("Enter the URL of the new tab as following 'https://website.com': ")
     open_tab(tab_name, tab_url, tabsList)
         
 # Added the ability to close an open tab.
@@ -54,6 +54,7 @@ def switch_tab(index=None):
     tab = tabs[index]
     print(f"Switched to tab {index + 1}: {tab['title']}")
     display_tab_content(tab['url'])
+
 
 def display_tab_content(url):
     try:
@@ -143,6 +144,7 @@ def import_tabs(file_path):
     except json.JSONDecodeError as e:
         print(f"Error decoding JSON: {e}")
     
+
 while True:
     print("\nBrowser Tabs Simulation Menu:")
     print("1. OpenTab")
