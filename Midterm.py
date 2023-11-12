@@ -17,14 +17,26 @@ def open_tab(tab_name, url):
         
 # Added the ability to close an open tab.
 
-def close_tab(tab_name):
+def close_tab(index=None):
     """Close an open tab."""
-    if tab_name in tabs:
-        del tabs[tab_name]
-        open_tabs_order.remove(tab_name)
-        print(f"Tab '{tab_name}' closed successfully.")
+    if not open_tabs_order:
+        print("No tabs are open.")
+        return
+
+    if index is None:
+        # If no index is provided, close the last opened tab
+        tab_name = open_tabs_order.pop()
     else:
-        print(f"Tab '{tab_name}' is not open.") 
+        try:
+            # Attempt to close the tab at the specified index
+            tab_name = open_tabs_order.pop(index)
+        except IndexError:
+            print(f"Invalid index: {index}. No such tab.")
+            return
+
+    del tabs[tab_name]
+    print(f"Tab '{tab_name}' closed successfully.")
+
 
 # Added the ability to switch to a different tab.
 
