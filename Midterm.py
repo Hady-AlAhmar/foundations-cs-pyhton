@@ -59,7 +59,7 @@ def switch_tab(index=None):     ##index (int or None) of the tab to switch to. I
 
 def display_tab_content(url):
     try:
-        response = requests.get(url) ###URL of the web page to fetch content from.
+        response = requests.get(url)    ###URL of the web page to fetch content from//Sends an HTTP GET request to the specified URL 
         html_content = response.text
         print(f"Displaying content from {url}:\n")
         print(html_content)
@@ -75,10 +75,10 @@ def display_all_tabs():
         print("All open tabs:")
         display_tabs_recursive(tabs, level=0)
 
-def display_tabs_recursive(tabs, level):
-    for tab in tabs:
+def display_tabs_recursive(tabs, level): #2 parameter tabs & level
+    for tab in tabs: ##for loop
         print("  " * level + f"{tab['title']}")
-        if 'tabs' in tab:
+        if 'tabs' in tab: ###checks if the current tab has nested tabs
             display_tabs_recursive(tab['tabs'], level + 1)
 
 def display_tab_content(url):
