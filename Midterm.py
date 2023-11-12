@@ -1,3 +1,4 @@
+import requests
 
 tabs = {}
 
@@ -39,12 +40,29 @@ def close_tab(index=None):
 
 # Added the ability to switch to a different tab.
 
-def switch_tab(tab_name):
-    """Switch to a different tab."""
-    if tab_name in tabs:
-        print(f"Switched to tab '{tab_name}'.")
-    else:
-        print(f"Tab '{tab_name}' is not open.")
+def switch_tab(index=None):
+    if not tabs:
+        print("No tabs to switch.")
+        return
+
+    if index is None:
+        index = len(tabs) - 1
+    elif not 0 <= index < len(tabs):
+        print("Invalid tab index.")
+        return
+
+    tab = tabs[index]
+    print(f"Switched to tab {index + 1}: {tab['title']}")
+    display_tab_content(tab['url'])
+
+def display_tab_content(url):
+    try:
+        response = requests.get(url)
+        html_content = response.text
+        print(f"Displaying content from {url}:\n")
+        print(html_content)
+    except requests.RequestException as e:
+        print(f"Error fetching content: {e}")
 
 # Added the ability to display all open tabs.
 
@@ -113,9 +131,9 @@ while True:
     elif choice == "2":
         tab_name = int(input("Enter the name of the tab to close: "))
         close_tab(tab_name)
-    elif choice == "3":
-        tab_name = input("Enter the name of the tab to switch to: ")
-        switch_tab(tab_name)
+    elif choice == '3':
+            index = input("Enter tab index to switch (optional): ")
+            switch_tab(int(index) if index.isdigit() else None)
     elif choice == "4":
         display_all_tabs()
     elif choice == "5":
