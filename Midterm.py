@@ -91,9 +91,9 @@ def display_tab_content(url):
         print(f"Error fetching content: {e}")
         
 # Added the ability to open a nested tab under a parent tab.
-
+#to open nested tabs under one tab
 def open_nested_tab():
-    if not tabs:
+    if not tabs:### check if there are any tabs available
         print("No tabs available to nest under.")
         return
 
@@ -106,13 +106,13 @@ def open_nested_tab():
 
     nested_tabs = []
     num_nested_tabs = int(input("Enter the number of nested tabs to create: "))
-
+###for loop to collect information about each nested tab
     for _ in range(num_nested_tabs):
         nested_title = input("Enter nested tab title: ")
         nested_url = input("Enter nested tab URL: ")
         nested_tabs.append({'title': nested_title, 'url': nested_url})
 
-    if 'tabs' not in parent_tab:
+    if 'tabs' not in parent_tab: ##creates a tab key if non is found
         parent_tab['tabs'] = []
 
     parent_tab['tabs'].extend(nested_tabs)
@@ -127,18 +127,18 @@ def clear_all_tabs():
     
 # Save the current tabs to a text file.
 
-def save_tabs(file_path):
+def save_tabs(file_path):   ###to save info in the tabs into a json file
     with open(file_path, 'w') as file:
         json.dump(tabs, file, indent=2)
     print(f"Tabs saved to {file_path}")
 
 # Import tabs from a text file.
 
-def import_tabs(file_path):
+def import_tabs(file_path): ##path to json file containing the tabs data
     global tabs
     try:
         with open(file_path, 'r') as file:
-            tabs = json.load(file)
+            tabs = json.load(file) #loads data in json
         print(f"Tabs loaded from {file_path}")
     except FileNotFoundError:
         print("File not found. Please enter a valid file path.")
