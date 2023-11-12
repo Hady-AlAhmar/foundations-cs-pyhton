@@ -108,29 +108,28 @@ while True:
 
     choice = input("Enter your choice (1-9): ")
 
-    if choice == '1':
-        add_new_tab()
-    elif choice == '2':
-        tab_name = input("Enter the name of the tab to close: ")
+    if choice == "1":
+        add_new_tab(open_tabs_order)
+    elif choice == "2":
+        tab_name = int(input("Enter the name of the tab to close: "))
         close_tab(tab_name)
-    elif choice == '3':
+    elif choice == "3":
         tab_name = input("Enter the name of the tab to switch to: ")
         switch_tab(tab_name)
-    elif choice == '4':
+    elif choice == "4":
         display_all_tabs()
-    elif choice == '5':
-        parent_tab = input("Enter the name of the parent tab: ")
-        nested_tab_name = input("Enter the name of the nested tab to open: ")
-        open_nested_tab(parent_tab, nested_tab_name)
-    elif choice == '6':
+    elif choice == "5":
+        parent_tab_index = int(input("Enter the index of the parent tab: "))
+        open_nested_tab(parent_tab_index)
+    elif choice == "6":
         clear_all_tabs()
-    elif choice == '7':
+    elif choice == "7":
         filename = input("Enter the filename to save tabs to: ")
         save_tabs(filename)
-    elif choice == '8':
+    elif choice == "8":
         filename = input("Enter the filename to import tabs from: ")
         import_tabs(filename)
-    elif choice == '9':
+    elif choice == "9":
         print("Exiting the program. Goodbye!")
         break
     else:
