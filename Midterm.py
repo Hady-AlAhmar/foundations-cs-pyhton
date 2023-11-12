@@ -24,7 +24,7 @@ def close_tab(tab_name):
         open_tabs_order.remove(tab_name)
         print(f"Tab '{tab_name}' closed successfully.")
     else:
-        print(f"Tab '{tab_name}' is not open.")
+        print(f"Tab '{tab_name}' is not open.") 
 
 # Added the ability to switch to a different tab.
 
