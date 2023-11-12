@@ -103,10 +103,9 @@ def open_nested_tab(parent_tab_index):
 # Added the ability to close all open tabs.
 
 def clear_all_tabs():
-    """Close all open tabs."""
-    for tab in open_tabs_order.copy():
-        close_tab(tab)
-    print("All tabs closed.")
+    global tabs
+    tabs = []
+    print("All tabs cleared.")
     
 # Save the current tabs to a text file.
 
