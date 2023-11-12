@@ -67,10 +67,26 @@ def display_tab_content(url):
 # Added the ability to display all open tabs.
 
 def display_all_tabs():
-    """Display all open tabs."""
-    print("Open Tabs:")
-    for tab in open_tabs_order:
-        print(f"- {tab}")
+    if not tabs:
+        print("No tabs open.")
+    else:
+        print("All open tabs:")
+        display_tabs_recursive(tabs, level=0)
+
+def display_tabs_recursive(tabs, level):
+    for tab in tabs:
+        print("  " * level + f"{tab['title']}")
+        if 'tabs' in tab:
+            display_tabs_recursive(tab['tabs'], level + 1)
+
+def display_tab_content(url):
+    try:
+        response = requests.get(url)
+        html_content = response.text
+        print(f"Displaying content from {url}:\n")
+        print(html_content)
+    except requests.RequestException as e:
+        print(f"Error fetching content: {e}")
         
 # Added the ability to open a nested tab under a parent tab.
 
