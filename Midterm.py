@@ -34,4 +34,12 @@ def switch_tab(tab_name):
         print(f"Switched to tab '{tab_name}'.")
     else:
         print(f"Tab '{tab_name}' is not open.")
+
+# Added the ability to display all open tabs.
+
+def display_all_tabs():
+    """Display all open tabs."""
+    print("Open Tabs:")
+    for tab in open_tabs_order:
+        print(f"- {tab}")
         
