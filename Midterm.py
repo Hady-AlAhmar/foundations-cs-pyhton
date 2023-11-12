@@ -61,3 +61,11 @@ def clear_all_tabs():
         close_tab(tab)
     print("All tabs closed.")
     
+# Save the current tabs to a text file.
+
+def save_tabs(filename):
+    """Save the current tabs to a text file."""
+    with open(filename, 'w') as file:
+        for tab_name in open_tabs_order:
+            file.write(tab_name + '\n')
+    print(f"Tabs saved to '{filename}'.")
