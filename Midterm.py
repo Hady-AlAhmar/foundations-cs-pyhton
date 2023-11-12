@@ -90,15 +90,31 @@ def display_tab_content(url):
         
 # Added the ability to open a nested tab under a parent tab.
 
-def open_nested_tab(parent_tab_index):
-    """Open a nested tab under a parent tab."""
-    parent_tab = open_tabs_order[parent_tab_index]
-    if parent_tab:
-        parent_tab["tabs"] = []
-        add_new_tab(parent_tab["tabs"])
-        # print(f"Nested tab '{nested_tab_name}' opened under '{parent_tab}'.")
-    else:
-        print(f"Parent tab '{parent_tab}' not found.")     
+def open_nested_tab():
+    if not tabs:
+        print("No tabs available to nest under.")
+        return
+
+    index = input("Enter the index of the parent tab: ")
+    if not index.isdigit() or not (0 <= int(index) < len(tabs)):
+        print("Invalid parent tab index.")
+        return
+
+    parent_tab = tabs[int(index)]
+
+    nested_tabs = []
+    num_nested_tabs = int(input("Enter the number of nested tabs to create: "))
+
+    for _ in range(num_nested_tabs):
+        nested_title = input("Enter nested tab title: ")
+        nested_url = input("Enter nested tab URL: ")
+        nested_tabs.append({'title': nested_title, 'url': nested_url})
+
+    if 'tabs' not in parent_tab:
+        parent_tab['tabs'] = []
+
+    parent_tab['tabs'].extend(nested_tabs)
+    print(f"Opened {num_nested_tabs} nested tab(s) under: {parent_tab['title']}")   
         
 # Added the ability to close all open tabs.
 
