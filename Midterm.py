@@ -1,5 +1,5 @@
 import requests
-import json
+import json ##from json library
 tabs = {}
 
 
@@ -7,16 +7,16 @@ open_tabs_order = []
 
 # Added the ability to open a new tab and check if a tab is already open.
 
-def open_tab(tab_name, tab_url, tabsList):
-    new_tab = {"name": tab_name, "URL": tab_url}
-    tabsList.append(new_tab)
+def open_tab(tab_name, tab_url, tabsList): ##Open a new tab and add it to the list of tabs.
+    new_tab = {"name": tab_name, "URL": tab_url} ### Create a new dictionary representing the information of the new tab
+
+    tabsList.append(new_tab)###tabs_list (list): The list containing information about all open tabs.
 
 
-def add_new_tab(tabsList):
-    """Add a new tab with title and URL."""
-    tab_name = input("Enter the title of the new tab: ")
-    tab_url = input("Enter the URL of the new tab as following 'https://website.com': ")
-    open_tab(tab_name, tab_url, tabsList)
+def add_new_tab(tabsList):##The list containing information about all open tabs.
+    tab_name = input("Enter the title of the new tab: ")##user input
+    tab_url = input("Enter the URL of the new tab as following 'https://website.com': ")##user input
+    open_tab(tab_name, tab_url, tabsList)##Call the open_tab function to add the new tab to the list
         
 # Added the ability to close an open tab.
 
