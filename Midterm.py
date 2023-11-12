@@ -109,7 +109,6 @@ def open_nested_tab():
     num_nested_tabs = int(input("Enter the number of nested tabs to create: "))
     
 
-
 ##O(n) indexing though a list and inputed by the user which are number of nested tabs
     for _ in range(num_nested_tabs):    ##for loop to collect information about each nested tab
         nested_title = input("Enter nested tab title: ")
@@ -148,6 +147,9 @@ def import_tabs(file_path): ##path to json file containing the tabs data
         print("File not found. Please enter a valid file path.")
     except json.JSONDecodeError as e:
         print(f"Error decoding JSON: {e}")
+   
+    #### referrence: json library and functions were explained in university
+    
     
 ###menu loop fot the user to choose which functionality to operate with and exists at option 9
 while True:
