@@ -6,8 +6,8 @@ open_tabs_order = []
 
 # Added the ability to open a new tab and check if a tab is already open.
 
-def open_tab():
-    """Open a new tab."""
+def add_new_tab():
+    """Add a new tab with title and URL."""
     tab_name = input("Enter the title of the new tab: ")
     tab_url = input("Enter the URL of the new tab: ")
     open_tab(tab_name, tab_url)
@@ -105,7 +105,7 @@ while True:
     choice = input("Enter your choice (1-9): ")
 
     if choice == '1':
-        open_tab()
+        add_new_tab()
     elif choice == '2':
         tab_name = input("Enter the name of the tab to close: ")
         close_tab(tab_name)
