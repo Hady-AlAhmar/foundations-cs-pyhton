@@ -15,7 +15,7 @@ def open_tab(tab_name, tab_url, tabsList):
 def add_new_tab(tabsList):
     """Add a new tab with title and URL."""
     tab_name = input("Enter the title of the new tab: ")
-    tab_url = input("Enter the URL of the new tab: ")
+    tab_url = input("Enter the URL of the new tab as following https://website.com: ")
     open_tab(tab_name, tab_url, tabsList)
         
 # Added the ability to close an open tab.
