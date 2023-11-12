@@ -163,10 +163,10 @@ while True:
     if choice == "1":
         add_new_tab(open_tabs_order)
     elif choice == '2':
-        index = input("Enter tab index to close (optional): ")
+        index = input("Enter tab index to close: ")
         close_tab(int(index) if index.isdigit() else None)
     elif choice == '3':
-        index = input("Enter tab index to switch (optional): ")
+        index = input("Enter tab index to switch: ")
         switch_tab(int(index) if index.isdigit() else None)
     elif choice == "4":
         display_all_tabs()
