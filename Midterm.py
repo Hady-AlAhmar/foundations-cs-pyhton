@@ -7,16 +7,16 @@ open_tabs_order = []
 
 # Added the ability to open a new tab and check if a tab is already open.
 
-def open_tab(tab_name, tab_url, tabsList): ##Open a new tab and add it to the list of tabs.
-    new_tab = {"name": tab_name, "URL": tab_url} ### Create a new dictionary representing the information of the new tab
+def open_tab(tab_name, tab_url, tabsList):  ##Open a new tab and add it to the list of tabs.
+    new_tab = {"name": tab_name, "URL": tab_url}    ### Create a new dictionary representing the information of the new tab
 
-    tabsList.append(new_tab)###tabs_list (list): The list containing information about all open tabs.
+    tabsList.append(new_tab)    ###tabs_list (list): The list containing information about all open tabs.
 
 
-def add_new_tab(tabsList):##The list containing information about all open tabs.
-    tab_name = input("Enter the title of the new tab: ")##user input
-    tab_url = input("Enter the URL of the new tab as following 'https://website.com': ")##user input
-    open_tab(tab_name, tab_url, tabsList)##Call the open_tab function to add the new tab to the list
+def add_new_tab(tabsList):  ##The list containing information about all open tabs.
+    tab_name = input("Enter the title of the new tab: ")    ##user input
+    tab_url = input("Enter the URL of the new tab as following 'https://website.com': ")    ##user input
+    open_tab(tab_name, tab_url, tabsList)   ##Call the open_tab function to add the new tab to the list
         
 # Added the ability to close an open tab.
 
@@ -40,14 +40,15 @@ def close_tab(index=None):
 
 # Added the ability to switch to a different tab.
 
-def switch_tab(index=None):
-    if not tabs:
+def switch_tab(index=None):     ##index (int or None) of the tab to switch to. If None switches to the last opened tab
+###Defines a function named switch_tab that takes one parameter 
+    if not tabs:    # Check if there are no tabs to switch
         print("No tabs to switch.")
         return
 
     if index is None:
         index = len(tabs) - 1
-    elif not 0 <= index < len(tabs):
+    elif not 0 <= index < len(tabs):    ##cheks if index is valid, if not then error
         print("Invalid tab index.")
         return
 
@@ -58,7 +59,7 @@ def switch_tab(index=None):
 
 def display_tab_content(url):
     try:
-        response = requests.get(url)
+        response = requests.get(url) ###URL of the web page to fetch content from.
         html_content = response.text
         print(f"Displaying content from {url}:\n")
         print(html_content)
