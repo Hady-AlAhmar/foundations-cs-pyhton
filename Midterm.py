@@ -15,4 +15,13 @@ def open_tab(tab_name):
     else:
         print(f"Tab '{tab_name}' is already open.")
 
+# Added the ability to close an open tab.
 
+def close_tab(tab_name):
+    """Close an open tab."""
+    if tab_name in tabs:
+        del tabs[tab_name]
+        open_tabs_order.remove(tab_name)
+        print(f"Tab '{tab_name}' closed successfully.")
+    else:
+        print(f"Tab '{tab_name}' is not open.")
