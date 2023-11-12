@@ -75,6 +75,7 @@ def display_all_tabs():
         print("All open tabs:")
         display_tabs_recursive(tabs, level=0)
 
+#O(n)
 def display_tabs_recursive(tabs, level): #2 parameter tabs & level
     for tab in tabs: ##for loop
         print("  " * level + f"{tab['title']}")
@@ -106,8 +107,11 @@ def open_nested_tab():
 
     nested_tabs = []
     num_nested_tabs = int(input("Enter the number of nested tabs to create: "))
-###for loop to collect information about each nested tab
-    for _ in range(num_nested_tabs):
+    
+
+
+##O(n) indexing though a list and inputed by the user which are number of nested tabs
+    for _ in range(num_nested_tabs):    ##for loop to collect information about each nested tab
         nested_title = input("Enter nested tab title: ")
         nested_url = input("Enter nested tab URL: ")
         nested_tabs.append({'title': nested_title, 'url': nested_url})
@@ -145,7 +149,7 @@ def import_tabs(file_path): ##path to json file containing the tabs data
     except json.JSONDecodeError as e:
         print(f"Error decoding JSON: {e}")
     
-
+###menu loop fot the user to choose which functionality to operate with and exists at option 9
 while True:
     print("\nBrowser Tabs Simulation Menu:")
     print("1. OpenTab")
