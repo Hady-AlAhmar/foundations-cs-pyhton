@@ -116,14 +116,16 @@ def save_tabs(file_path):
 
 # Import tabs from a text file.
 
-def import_tabs(filename):
-    """Import tabs from a text file."""
-    global tabs, open_tabs_order
-    with open(filename, 'r') as file:
-        tab_names = [line.strip() for line in file.readlines()]
-        tabs = {tab_name: {} for tab_name in tab_names}
-        open_tabs_order = list(tabs.keys())
-    print(f"Tabs imported from '{filename}'.")
+def import_tabs(file_path):
+    global tabs
+    try:
+        with open(file_path, 'r') as file:
+            tabs = json.load(file)
+        print(f"Tabs loaded from {file_path}")
+    except FileNotFoundError:
+        print("File not found. Please enter a valid file path.")
+    except json.JSONDecodeError as e:
+        print(f"Error decoding JSON: {e}")
     
 while True:
     print("\nBrowser Tabs Simulation Menu:")
@@ -141,12 +143,12 @@ while True:
 
     if choice == "1":
         add_new_tab(open_tabs_order)
-    elif choice == "2":
-        tab_name = int(input("Enter the name of the tab to close: "))
-        close_tab(tab_name)
+    elif choice == '2':
+        index = input("Enter tab index to close (optional): ")
+        close_tab(int(index) if index.isdigit() else None)
     elif choice == '3':
-            index = input("Enter tab index to switch (optional): ")
-            switch_tab(int(index) if index.isdigit() else None)
+        index = input("Enter tab index to switch (optional): ")
+        switch_tab(int(index) if index.isdigit() else None)
     elif choice == "4":
         display_all_tabs()
     elif choice == "5":
