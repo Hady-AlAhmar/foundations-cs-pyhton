@@ -42,4 +42,12 @@ def display_all_tabs():
     print("Open Tabs:")
     for tab in open_tabs_order:
         print(f"- {tab}")
-        
+# Added the ability to open a nested tab under a parent tab.
+
+def open_nested_tab(parent_tab, nested_tab_name):
+    """Open a nested tab under a parent tab."""
+    if parent_tab in tabs:
+        tabs[parent_tab][nested_tab_name] = {}
+        print(f"Nested tab '{nested_tab_name}' opened under '{parent_tab}'.")
+    else:
+        print(f"Parent tab '{parent_tab}' not found.")       
