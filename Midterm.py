@@ -25,3 +25,13 @@ def close_tab(tab_name):
         print(f"Tab '{tab_name}' closed successfully.")
     else:
         print(f"Tab '{tab_name}' is not open.")
+
+# Added the ability to switch to a different tab.
+
+def switch_tab(tab_name):
+    """Switch to a different tab."""
+    if tab_name in tabs:
+        print(f"Switched to tab '{tab_name}'.")
+    else:
+        print(f"Tab '{tab_name}' is not open.")
+        
