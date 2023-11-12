@@ -69,3 +69,14 @@ def save_tabs(filename):
         for tab_name in open_tabs_order:
             file.write(tab_name + '\n')
     print(f"Tabs saved to '{filename}'.")
+
+# Import tabs from a text file.
+
+def import_tabs(filename):
+    """Import tabs from a text file."""
+    global tabs, open_tabs_order
+    with open(filename, 'r') as file:
+        tab_names = [line.strip() for line in file.readlines()]
+        tabs = {tab_name: {} for tab_name in tab_names}
+        open_tabs_order = list(tabs.keys())
+    print(f"Tabs imported from '{filename}'.")
